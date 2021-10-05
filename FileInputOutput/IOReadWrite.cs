@@ -6,17 +6,33 @@ using System.IO;
 
 namespace FileInputOutput
 {    
+    /// <summary>
+    /// Class to do the File read,write and streamreder and streamwriter operations
+    /// </summary>
     class IOReadWrite
     {
+        /// <summary>
+        /// ReadFilePath to read the Data and WriteFilePath to write the data in file
+        /// </summary>
         internal const string ReadFilePath = @"D:\VS .net\FileInputOutput\FileInputOutput\ReadFileData.txt";
         internal const string WriteFilePath = @"D:\VS .net\FileInputOutput\FileInputOutput\WriteFileData.txt";
-
+        /// <summary>
+        /// This method Read all the data in the File if it is exits
+        /// </summary>
         public static void ReadData()
         {
             Console.WriteLine("++++++++++++++++++++++++++++Read-File+++++++++++++++++++++++++++++++++");
-            Console.WriteLine( File.ReadAllText(ReadFilePath));
+            if (File.Exists(ReadFilePath))
+            {
+                Console.WriteLine(File.ReadAllText(ReadFilePath));
+            }
+            else { Console.WriteLine("File Done Not Exists :)"); }
             Console.WriteLine("**********************************************************************");
         }
+        /// <summary>
+        /// WirteData method to wirte the data in the file
+        /// </summary>
+        /// <param name="inputdata"></param>
         public static void WriteData(string inputdata)
         {
             Console.WriteLine("++++++++++++++++++++++++++++Write-File+++++++++++++++++++++++++++++++++");
@@ -24,7 +40,9 @@ namespace FileInputOutput
             Console.WriteLine("String is Added");          
             Console.WriteLine("**********************************************************************");
         }
-
+        /// <summary>
+        /// StreamReader used to read the data from the file
+        /// </summary>
         public static void StreamReadData()
         {
             //Without "using" keyword
@@ -33,6 +51,7 @@ namespace FileInputOutput
             StreamReader streamReader = new StreamReader(ReadFilePath);
             Console.WriteLine(streamReader.ReadToEnd());           
             Console.WriteLine("**********************************************************************");
+            //With "using" keyword 
             Console.WriteLine("With 'using' Keyword");
             using (StreamReader streamReaderusing = new StreamReader(ReadFilePath))
             {
@@ -43,6 +62,10 @@ namespace FileInputOutput
             }
             streamReader.Close();
         }
+        /// <summary>
+        /// StreamWriter to write the data in the file
+        /// </summary>
+        /// <param name="data"></param>
         public static void StreamWriteData(string data)
         {
             Console.WriteLine("++++++++++++++++++++++++StreamWriter-File++++++++++++++++++++++++++++++");           
