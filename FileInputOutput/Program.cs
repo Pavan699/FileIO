@@ -10,8 +10,7 @@ namespace FileInputOutput
             int count = 1;
             while(count!=2)
             {
-                Console.WriteLine();
-                Console.WriteLine("1.ReadData 2.WriteData 3.StreamReader 4.StreamWriter 5.Exit");
+                Console.WriteLine("1.ReadData 2.WriteData 3.StreamReader 4.StreamWriter 5.CopyFile 6.DeleteFile 7.Exit");
                 Console.Write("Enter The Choice : ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch(choice)
@@ -28,6 +27,12 @@ namespace FileInputOutput
                     case 4:
                         string data = "\n In Data-Structures : Linked-List,Array-List,Hash-set,Hash-Map,BST,Dictionries,Stack,Queue,etc....";
                         IOReadWrite.StreamWriteData(data);
+                        break;
+                    case 5:
+                        IOReadWrite.CopyFile();
+                        break;
+                    case 6:
+                        IOReadWrite.DeleteFile();
                         break;
                     default:
                         Console.WriteLine("Worng Input :)");

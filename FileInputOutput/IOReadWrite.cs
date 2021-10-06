@@ -16,6 +16,7 @@ namespace FileInputOutput
         /// </summary>
         internal const string ReadFilePath = @"D:\VS .net\FileInputOutput\FileInputOutput\ReadFileData.txt";
         internal const string WriteFilePath = @"D:\VS .net\FileInputOutput\FileInputOutput\WriteFileData.txt";
+        internal const string CopyFilePath = @"D:\VS .net\FileInputOutput\FileInputOutput\CopyFileData.txt";
         /// <summary>
         /// This method Read all the data in the File if it is exits
         /// </summary>
@@ -73,6 +74,47 @@ namespace FileInputOutput
             streamWriter.WriteLine(data);
             Console.WriteLine("Data is Added");
             streamWriter.Close();
+            Console.WriteLine("**********************************************************************");
+        }
+        /// <summary>
+        /// method to copy the data from one File to another file
+        /// </summary>
+        public static void CopyFile()
+        {
+            Console.WriteLine("+++++++++++++++++++++++++++++++Copy-File++++++++++++++++++++++++++++++");
+            //ReadFilePath and CopyFilePath is declared Globaly having the path of ReadFileData.txt and CopyFileData.txt
+            //ReadFileData.txt data is Copied into CopyFileData.txt 
+            if (File.Exists(CopyFilePath))
+            {
+                //DeleteFile();
+                try
+                {
+                    File.Copy(ReadFilePath, CopyFilePath);
+                    Console.WriteLine("Data is Copied");
+                }catch(Exception Ex)
+                {
+                    Console.WriteLine(Ex.Message);
+                }
+            }
+            else 
+            {
+                File.Copy(ReadFilePath, CopyFilePath);
+                Console.WriteLine("Data is Copied");
+            }
+            Console.WriteLine("**********************************************************************");
+        }
+        /// <summary>
+        /// Method to Delete the Path if it is exist
+        /// </summary>
+        public static void DeleteFile()
+        {
+            Console.WriteLine("++++++++++++++++++++++++++++++Delete-File++++++++++++++++++++++++++++++");
+            if (File.Exists(CopyFilePath))
+            {
+                File.Delete(CopyFilePath);
+                Console.WriteLine("File Already Exist. It is deleted");
+            }
+            else { Console.WriteLine("File does not exist"); }
             Console.WriteLine("**********************************************************************");
         }
     }
